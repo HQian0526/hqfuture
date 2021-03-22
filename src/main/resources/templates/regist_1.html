@@ -1,0 +1,164 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="layui/css/modules/layer/default/layer.css" />
+    <link rel="stylesheet" href="layui/css/layui.css" />
+    <script type="text/javascript" src="layui/layui.js"></script>
+
+    <style type="text/css">
+
+        #background{
+            background: url(images/登录页背景.jpg);
+            width: 1535px;
+            height: 720px;
+        }
+
+        .logo{
+            float: left;
+        }
+
+        .sign{
+            float: left;
+            position: relative;
+            left: 210px;
+            top: 430px;
+        }
+
+        .signature{
+            padding-top: 5px;
+        }
+
+        .loginform{
+            background-color: white;
+            opacity: 0.7;
+            width: 602px;
+            height: 420px;
+            border: 1px;
+            border-radius: 3%;
+            position: relative;
+            top:180px;
+            left: 750px;
+        }
+
+        .loginform-bottom{
+            margin-top: -5px;
+            margin-left: 140px;
+        }
+
+        .logintable{
+            border-collapse: separate;
+            border-spacing: 3px 20px;
+            padding-top: 15px;
+            padding-left: 30px;
+        }
+
+        .futurelogo{
+            margin-left: 35px;
+        }
+
+        .icp{
+            float:right;
+            margin-top: 280px;
+        }
+
+        .input{
+            width: 200px;
+        }
+
+        #canvas{
+            cursor:pointer;
+            padding-left: 10px;
+        }
+        .wrong{
+            font-size: 15px;
+            color: red;
+        }
+
+        .hidden{
+            display: block;
+        }
+
+        .loginform-top span{
+            font-size: 24px;
+            padding-left: 100px;
+        }
+
+        #regist{
+            width: 150px;
+        }
+        .zhuce{
+            padding-left: 130px;
+        }
+
+        .zhuce button{
+            width: 100px;
+        }
+
+        .loginform-top{
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row"> <!--栅格系统-->
+
+    <div class="layui-col-xs12 layui-col-md12"> <!--手机电脑自适应铺满-->
+        <div class="grid-demo">   <!--以下为自适应内容-->
+            <div id="background">
+                <div class="sign">
+                    <img class="signature" src="images/logo8.png" />
+                </div>
+
+                <div class="loginform"> <!--白色半透明框-->
+                    <div class="loginform-top"><span>注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp册 — 完&nbsp;善&nbsp;信&nbsp;息</span></div>
+                    <div class="loginform-right">
+                        <form method="post" action="registjudge1">
+                            <table class="logintable">
+
+                                <tr>
+                                    <td>请输入您的昵称：</td>
+                                    <td colspan="2"><input name="countnum" type="text" class="input" id="input" onchange="checkcount(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>请选择您的性别：</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" name="sex" value="男">男</label>&nbsp&nbsp&nbsp&nbsp
+                                        <label><input type="radio" name="sex" value="女">女</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>请选择您的职业：</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" name="identity" value="教师">教师</label>&nbsp&nbsp&nbsp&nbsp
+                                        <label><input type="radio" name="identity" value="学生">学生</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>请输入联系方式：</td>
+                                    <td colspan="2"><input name="password_2" type="password" class="input2" id="input2" onchange="checkpassword(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>电&nbsp;&nbsp;&nbsp;子&nbsp;&nbsp;&nbsp;邮&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;：</td>
+                                    <td colspan="2"><input name="check" class="check" id="check" onchange="checkword(this.value)"></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" class="zhuce"><button type="submit" class="layui-btn layui-btn-sm" id="regist_1"><span>下&nbsp;一&nbsp;步</span></button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
+                </div> <!--白色半透明框-->
+
+                <div class="icp">© 2020-2021 hqfuture.com / hqfuture.cn(黄乾) 版权所有&nbsp;&nbsp;<a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">粤icp备2020122665号</a></div>
+
+            </div>
+        </div>   <!--以上为自适应内容-->
+    </div> <!--手机电脑自适应铺满-->
+</div> <!--栅格系统-->
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hqfuture.Mapper.UserMapper">
+
+    <select id="SelectLogin" parameterType="User" resultType="User">
+        select name from user where countnum = #{countnum} and password = #{password}
+    </select>
+
+    <select id="Rigistfunction" parameterType="User" resultType="User">
+        insert into user(countnum,password,sex,name,phone,email,identity ) value (#{countnum},#{password},#{sex},#{name},#{phone},#{email},#{identity })
+    </select>
+</mapper>

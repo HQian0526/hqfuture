@@ -1,0 +1,230 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>全国教育辅助系统</title>
+	<link rel="stylesheet" href="layui/css/modules/layer/default/layer.css" />
+	<link rel="stylesheet" href="layui/css/layui.css" />
+	<script type="text/javascript" src="layui/layui.js"></script>
+
+	<style type="text/css">
+
+		#background{
+			background: url(images/登录页背景.jpg);
+			width: 1535px;
+			height: 720px;
+		}
+
+		.logo{
+			float: left;
+		}
+
+		.sign{
+			float: left;
+			position: relative;
+			left: 210px;
+			top: 430px;
+		}
+
+		.signature{
+			padding-top: 5px;
+		}
+
+		.loginform{
+			background-color: white;
+			opacity: 0.7;
+			width: 602px;
+			height: 420px;
+			border: 1px;
+			border-radius: 3%;
+			position: relative;
+			top:180px;
+			left: 750px;
+		}
+
+		.loginform-top{
+			width:600px; height: 60px;
+			background: url(images/标题.jpg);
+			position: relative;
+			top: 10px;
+		}
+
+		.loginform-left{
+			width: 260px; height: 260px;
+			margin-top: 30px;
+			background: url(images/孔子.jpg);
+			float: left;
+			margin-left: -90px;
+		}
+
+		.loginform-bottom{
+			margin-top: -5px;
+		}
+
+		.logintable{
+			border-collapse: separate;
+			border-spacing: 3px 20px;
+			padding-top: 15px;
+			padding-left: 30px;
+		}
+
+		.check{
+			width: 70px;
+		}
+
+		.futurelogo{
+			margin-left: 35px;
+		}
+
+		.icp{
+			float:right;
+			margin-top: 280px;
+		}
+
+		.input{
+			width: 185px;
+		}
+
+		#canvas{
+			cursor:pointer;
+			padding-left: 10px;
+		}
+		.wrong{
+			font-size: 15px;
+			color: #ff0000;
+		}
+
+		.hidden{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+<div class="layui-row"> <!--栅格系统-->
+
+	<div class="layui-col-xs12 layui-col-md12"> <!--手机电脑自适应铺满-->
+		<div class="grid-demo">   <!--以下为自适应内容-->
+			<div id="background">
+				<div class="sign">
+					<img class="signature" src="images/logo8.png" />
+				</div>
+
+				<div class="loginform"> <!--白色半透明框-->
+					<div class="loginform-top"></div>
+					<div class="loginform-left"></div>
+					<div class="line" style="float:left;margin-top: 20px;width: 1px;height: 320px; background: darkgray;"></div>
+					<div class="loginform-right">
+						<form method="post" action="login">
+							<table class="logintable">
+								<tr>
+									<td>账&nbsp;&nbsp;  号：</td>
+									<td colspan="2"><input name="countnum" type="text" class="input"></td>
+								</tr>
+								<tr>
+									<td>密&nbsp;&nbsp;  码：</td>
+									<td colspan="2"><input name="password" type="password" class="input"></td>
+								</tr>
+								<tr>
+									<td>验证码：</td>
+									<td><input name="check" class="check" id="check" onchange="checkword(this.value)"></td>
+									<td><canvas id="canvas" width="100px" height="40px"></canvas></td>
+								</tr>
+
+								<tr>
+									<td><button type="submit" class="layui-btn layui-btn-sm" id="login">登录</button></td>
+									<td><a type="button" class="layui-btn layui-btn-sm" id="regist" href="regist">注册</a></button></td>
+									<td align="right"><button type="button" class="layui-btn layui-btn-sm" id="knowus">免登录提交作业</button></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<div class="loginform-bottom">
+						<img class="futurelogo" src="images/logo14.png"/>
+					</div>
+
+				</div> <!--白色半透明框-->
+
+				<div class="icp">© 2020-2021 hqfuture.com 版权所有&nbsp;&nbsp;<a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">粤icp备2020122665号</a></div>
+
+			</div>
+		</div>   <!--以上为自适应内容-->
+	</div> <!--手机电脑自适应铺满-->
+</div> <!--栅格系统-->
+
+<script type="text/javascript">
+	//隐藏输入有误
+	//document.getElementById("wrong").style.display = "none";
+	//生成随机数
+	function randomNum(min,max){
+		return Math.floor(Math.random()*(max-min)+min);
+	}
+	//生成随机颜色RGB分量
+	function randomColor(min,max){
+		var _r = randomNum(min,max);
+		var _g = randomNum(min,max);
+		var _b = randomNum(min,max);
+		return "rgb("+_r+","+_g+","+_b+")";
+	}
+	//先阻止画布默认点击发生的行为再执行drawPic()方法
+	document.getElementById("canvas").onclick = function(e){
+		e.preventDefault();
+		drawPic();
+	};
+	function drawPic(){
+		//获取到元素canvas
+		var $canvas = document.getElementById("canvas");
+		var _str = "0123456789";//设置随机数库
+		var _picTxt = "";//随机数
+		var _num = 4;//4个随机数字
+		var _width = $canvas.width;
+		var _height = $canvas.height;
+		var ctx = $canvas.getContext("2d");//获取 context 对象
+		ctx.textBaseline = "bottom";//文字上下对齐方式--底部对齐
+		ctx.fillStyle = randomColor(180,240);//填充画布颜色
+		ctx.fillRect(0,0,_width,_height);//填充矩形--画画
+		for(var i=0; i<_num; i++){
+			var x = (_width-10)/_num*i+10;
+			var y = randomNum(_height/2,_height);
+			var deg = randomNum(-45,45);
+			var txt = _str[randomNum(0,_str.length)];
+			_picTxt += txt;//获取一个随机数
+			ctx.fillStyle = randomColor(10,100);//填充随机颜色
+			ctx.font = randomNum(22,30)+"px SimHei";//设置随机数大小，字体为SimHei
+			ctx.translate(x,y);//将当前xy坐标作为原始坐标
+			ctx.rotate(deg*Math.PI/180);//旋转随机角度
+			ctx.fillText(txt, 0,0);//绘制填色的文本
+			ctx.rotate(-deg*Math.PI/180);
+			ctx.translate(-x,-y);
+		}
+		for(var i=0; i<_num; i++){
+			//定义笔触颜色
+			ctx.strokeStyle = randomColor(90,180);
+			ctx.beginPath();
+			//随机划线--4条路径
+			ctx.moveTo(randomNum(0,_width), randomNum(0,_height));
+			ctx.lineTo(randomNum(0,_width), randomNum(0,_height));
+			ctx.stroke();
+		}
+		for(var i=0; i<_num*10; i++){
+			ctx.fillStyle = randomColor(0,255);
+			ctx.beginPath();
+			//随机画原，填充颜色
+			ctx.arc(randomNum(0,_width),randomNum(0,_height), 1, 0, 2*Math.PI);
+			ctx.fill();
+		}
+		return _picTxt;//返回随机数字符串
+	}
+
+	var result = drawPic();
+
+	function checkword(x){
+		if(x!=result){
+			alert(result+"请输入正确的验证码");
+			result = drawPic();
+		}else{
+			return;
+		}
+	}
+</script>
+</body>
+</html>

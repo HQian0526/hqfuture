@@ -1,0 +1,276 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="layui/css/modules/layer/default/layer.css" />
+    <link rel="stylesheet" href="layui/css/layui.css" />
+    <script type="text/javascript" src="layui/layui.js"></script>
+
+    <style type="text/css">
+
+        #background{
+            background: url(images/登录页背景.jpg);
+            width: 1535px;
+            height: 720px;
+        }
+
+        .logo{
+            float: left;
+        }
+
+        .sign{
+            float: left;
+            position: relative;
+            left: 210px;
+            top: 430px;
+        }
+
+        .signature{
+            padding-top: 5px;
+        }
+
+        .loginform{
+            background-color: white;
+            opacity: 0.7;
+            width: 602px;
+            height: 540px;
+            border: 1px;
+            border-radius: 3%;
+            position: relative;
+            top:120px;
+            left: 750px;
+        }
+
+        .loginform-bottom{
+            margin-top: -5px;
+            margin-left: 140px;
+        }
+
+        .logintable{
+            border-collapse: separate;
+            border-spacing: 3px 20px;
+            padding-top: 15px;
+            padding-left: 30px;
+        }
+
+        .check{
+            width: 85px;
+        }
+
+        .futurelogo{
+            margin-left: 35px;
+        }
+
+        .icp{
+            float:right;
+            margin-top: 280px;
+        }
+
+        .input{
+            width: 200px;
+        }
+
+        #canvas{
+            cursor:pointer;
+            padding-left: 10px;
+        }
+        .wrong{
+            font-size: 15px;
+            color: red;
+        }
+
+        .hidden{
+            display: block;
+        }
+
+        .loginform-top span{
+            font-size: 24px;
+            padding-left: 150px;
+        }
+
+        #regist{
+            width: 150px;
+        }
+
+        .zhuce{
+            padding-left: 100px;
+        }
+
+        .loginform-top{
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row"> <!--栅格系统-->
+
+    <div class="layui-col-xs12 layui-col-md12"> <!--手机电脑自适应铺满-->
+        <div class="grid-demo">   <!--以下为自适应内容-->
+            <div id="background">
+                <div class="sign">
+                    <img class="signature" src="images/logo8.png" />
+                </div>
+
+                <div class="loginform"> <!--白色半透明框-->
+                    <div class="loginform-top"><span>注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</span></div>
+                    <div class="loginform-right">
+                        <form method="post" action="registjudge">
+                            <table class="logintable">
+                                <tr>
+                                    <td>请输入您的昵称：</td>
+                                    <td colspan="2"><input name="name" type="text" class="input" id="username" onchange="checkcount(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>请选择您的性别：</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" name="sex" value="男">男</label>&nbsp&nbsp&nbsp&nbsp
+                                        <label><input type="radio" name="sex" value="女">女</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>请选择您的职业：</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" name="identity" value="教师">教师</label>&nbsp&nbsp&nbsp&nbsp
+                                        <label><input type="radio" name="identity" value="学生">学生</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>请输入联系方式：</td>
+                                    <td colspan="2"><input name="phone" type="password" class="input2" id="connect" onchange="checkpassword(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>电&nbsp;&nbsp;&nbsp;子&nbsp;&nbsp;&nbsp;邮&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;：</td>
+                                    <td colspan="2"><input name="email" class="check" id="email"></td>
+                                </tr>
+                                <tr>
+                                    <td>请&nbsp;设&nbsp;置&nbsp;账&nbsp;号：</td>
+                                    <td colspan="2"><input name="countnum" type="text" class="input" id="input" onchange="checkcount(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>请&nbsp;设&nbsp;置&nbsp;密&nbsp;码：</td>
+                                    <td colspan="2"><input name="password_1" type="password" class="input1" id="input1" onchange="checkpass(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>请&nbsp;确&nbsp;认&nbsp;密&nbsp;码：</td>
+                                    <td colspan="2"><input name="password" type="password" class="input2" id="input2" onchange="checkpassword(this.value)"></td>
+                                </tr>
+                                <tr>
+                                    <td>验证码：</td>
+                                    <td><input name="check" class="check" id="check" onchange="checkword(this.value)"></td>
+                                    <td><canvas id="canvas" width="100px" height="40px"></canvas></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" class="zhuce"><button type="submit" class="layui-btn layui-btn-sm" id="regist" onclick="tips()">提&nbsp;交&nbsp;注&nbsp;册</button></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
+                </div> <!--白色半透明框-->
+
+                <div class="icp">© 2020-2021 hqfuture.com / hqfuture.cn(黄乾) 版权所有&nbsp;&nbsp;<a href="http://beian.miit.gov.cn" rel="nofollow" target="_blank">粤icp备2020122665号</a></div>
+
+            </div>
+        </div>   <!--以上为自适应内容-->
+    </div> <!--手机电脑自适应铺满-->
+</div> <!--栅格系统-->
+
+<script type="text/javascript">
+    //生成随机数
+    function randomNum(min,max){
+        return Math.floor(Math.random()*(max-min)+min);
+    }
+    //生成随机颜色RGB分量
+    function randomColor(min,max){
+        var _r = randomNum(min,max);
+        var _g = randomNum(min,max);
+        var _b = randomNum(min,max);
+        return "rgb("+_r+","+_g+","+_b+")";
+    }
+    //先阻止画布默认点击发生的行为再执行drawPic()方法
+    document.getElementById("canvas").onclick = function(e){
+        e.preventDefault();
+        drawPic();
+    };
+    function drawPic(){
+        //获取到元素canvas
+        var $canvas = document.getElementById("canvas");
+        var _str = "0123456789";//设置随机数库
+        var _picTxt = "";//随机数
+        var _num = 4;//4个随机数字
+        var _width = $canvas.width;
+        var _height = $canvas.height;
+        var ctx = $canvas.getContext("2d");//获取 context 对象
+        ctx.textBaseline = "bottom";//文字上下对齐方式--底部对齐
+        ctx.fillStyle = randomColor(180,240);//填充画布颜色
+        ctx.fillRect(0,0,_width,_height);//填充矩形--画画
+        for(var i=0; i<_num; i++){
+            var x = (_width-10)/_num*i+10;
+            var y = randomNum(_height/2,_height);
+            var deg = randomNum(-45,45);
+            var txt = _str[randomNum(0,_str.length)];
+            _picTxt += txt;//获取一个随机数
+            ctx.fillStyle = randomColor(10,100);//填充随机颜色
+            ctx.font = randomNum(22,30)+"px SimHei";//设置随机数大小，字体为SimHei
+            ctx.translate(x,y);//将当前xy坐标作为原始坐标
+            ctx.rotate(deg*Math.PI/180);//旋转随机角度
+            ctx.fillText(txt, 0,0);//绘制填色的文本
+            ctx.rotate(-deg*Math.PI/180);
+            ctx.translate(-x,-y);
+        }
+        for(var i=0; i<_num; i++){
+            //定义笔触颜色
+            ctx.strokeStyle = randomColor(90,180);
+            ctx.beginPath();
+            //随机划线--4条路径
+            ctx.moveTo(randomNum(0,_width), randomNum(0,_height));
+            ctx.lineTo(randomNum(0,_width), randomNum(0,_height));
+            ctx.stroke();
+        }
+        for(var i=0; i<_num*10; i++){
+            ctx.fillStyle = randomColor(0,255);
+            ctx.beginPath();
+            //随机画原，填充颜色
+            ctx.arc(randomNum(0,_width),randomNum(0,_height), 1, 0, 2*Math.PI);
+            ctx.fill();
+        }
+        return _picTxt;//返回随机数字符串
+    }
+    var result = drawPic();
+    //提取输入的密码1
+    function showpass(){
+        var p1 = document.getElementById("input1").value
+        return p1;
+    }
+
+    //提取输入的密码2
+    function showpassword(){
+        var p2 = document.getElementById("input2").value
+        return p2;
+    }
+
+    function checkword(valu){
+        var x = document.getElementById("check").value;
+        if(x!= result){
+            alert("请输入正确的验证码");
+            result = drawPic();
+        }
+    }
+
+    function checkpassword(valu){
+        var p1 = showpass();
+        var p2 = showpassword();
+        if(p1!=p2){
+            alert("密码前后不一致，请重新输入");
+            drawPic();
+        }
+
+    }
+
+    function tips() {
+        alert("注册成功！请登录")
+    }
+</script>
+</body>
+</html>
